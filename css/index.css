@@ -444,6 +444,7 @@
     background-color: #f1f0f0;
     display: flex;
     justify-content: space-around;
+    z-index: 1;
 }
 
 .home-section .home .content_center img {
@@ -483,6 +484,7 @@
     position: relative;
     background-color: #fff;
     padding: 3vh 2vw;
+    z-index: 1;
 }
 .home-section .home .content_text .text1,
 .home-section .home .content_text .text2,
@@ -530,12 +532,14 @@
 }
 /* 尾部 */
 .home-section .home .content_foot{
+    position: relative;
     width: 100%;
     height:220px;
     padding: 60px 10vw;
     background-color: rgb(48,48,48);
     display: flex;
     justify-content: space-around;
+    z-index: 1;
 }
 .home-section .home .content_foot .about_me,
 .home-section .home .content_foot .get_in_touch,
