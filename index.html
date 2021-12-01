@@ -115,16 +115,16 @@
                 <img src="./image/background2.png" alt="Photo by Lucas Kohoko on Unsplash" class="bgc">
                 <section class="sub_section">
                     <h1 class="title1">欢迎来到我的个人网页</h1>
-                    <h5 class="title2">LaoZhu_Jackson</h5>
+                    <h5 data-spotlight="LaoZhu_Jackson!" class="title2">LaoZhu_Jackson</h5>
                 </section>
                 <div class="social-icons">
                     <a href="https://github.com/LaoZhuJackson"><i class="bi bi-github"></i></a>
                     <a href="#"><i class="bi bi-envelope-fill"></i></a>
                 </div>
-                <i class="down_icon bi bi-chevron-double-down"></i>
+                <a href="#center_top"><i class="down_icon bi bi-chevron-double-down"></i></a>
             </div>
             <!-- 中间 -->
-            <div class="content_center">
+            <div class="content_center" id="center_top">
                 <div class="first">
                     <img src="./image/first_change.jpg" alt="">
                     <h3>consequat</h3>
@@ -155,7 +155,8 @@
                     </div>
                     <div class="text_box">
                         <span>mollit eu deserunt aliqua adipisicing esse dolor amet</span>
-                        <span>ea exercitation proident ex velit elit veniam est laborum ut ea occaecat anim id reprehenderit Lorem voluptate sint</span>
+                        <span>ea exercitation proident ex velit elit veniam est laborum ut ea occaecat anim id
+                            reprehenderit Lorem voluptate sint</span>
                     </div>
                 </div>
                 <div class="text2">
@@ -165,7 +166,8 @@
                     </div>
                     <div class="text_box">
                         <span>mollit eu deserunt aliqua adipisicing esse dolor amet</span>
-                        <span>ea exercitation proident ex velit elit veniam est laborum ut ea occaecat anim id reprehenderit Lorem voluptate sint</span>
+                        <span>ea exercitation proident ex velit elit veniam est laborum ut ea occaecat anim id
+                            reprehenderit Lorem voluptate sint</span>
                     </div>
                 </div>
                 <div class="text3">
@@ -175,7 +177,8 @@
                     </div>
                     <div class="text_box">
                         <span>mollit eu deserunt aliqua adipisicing esse dolor amet</span>
-                        <span>ea exercitation proident ex velit elit veniam est laborum ut ea occaecat anim id reprehenderit Lorem voluptate sint</span>
+                        <span>ea exercitation proident ex velit elit veniam est laborum ut ea occaecat anim id
+                            reprehenderit Lorem voluptate sint</span>
                     </div>
                 </div>
             </div>
@@ -222,6 +225,19 @@
         // 菜单按钮添加点击事件
         sidebarBtn.addEventListener("click", () => {
             sidebar.classList.toggle("close");
+        })
+    </script>
+    <script>
+        $(function () {
+            //获取中间的顶部位置
+            var center_top = $('#center_top').offset().top;
+            //添加点击事件方法
+            $('.down_icon').click(function () {
+                //用方法实现定位
+                $('html, body').animate({
+                    scrollTop: center_top
+                }, 500);
+            })
         })
     </script>
 </body>

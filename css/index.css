@@ -7,6 +7,9 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 .sidebar {
     position: fixed;
@@ -285,7 +288,7 @@
     height: 100%;
     left: 260px;
     /* 渐变背景 35%表示颜色一到达35%时结束渐变，35%以后全部为颜色二*/
-    background-image: linear-gradient(#88e8ff ,rgb(232, 250, 255) 35%);
+    background-image: linear-gradient(#88e8ff, rgb(232, 250, 255) 35%);
     /* calc() 函数用于动态计算长度值 calculate */
     /* 相当于吸附在左侧 */
     width: calc(100% - 260px);
@@ -324,7 +327,8 @@
     opacity: 0.4;
     transition: all 0.3s ease;
 }
-.home-section .home-content .bi-list:hover{
+
+.home-section .home-content .bi-list:hover {
     opacity: 1;
 }
 
@@ -339,6 +343,7 @@
     width: 100%;
     height: 100%;
 }
+
 /* z-index必须在定位元素（position:relative/absolute/fixed/sticky）上才有效 */
 .home-section .home .content_top img {
     position: relative;
@@ -348,18 +353,31 @@
     background-size: cover;
     z-index: 1;
 }
-.home-section .home .content_top .down_icon{
+
+.home-section .home .content_top .down_icon {
     position: absolute;
     color: #11101d;
     width: 30px;
     height: 30px;
     line-height: 33px;
-    border-radius :50%;
-    text-align:center;
+    border-radius: 50%;
+    text-align: center;
     background-color: rgba(255, 255, 255, 0.856);
     top: 95%;
     left: calc(50% + 20px);
     z-index: 2;
+    animation: down_icon 1.2s infinite ease-out;
+}
+@keyframes down_icon {
+    0%{
+        top: 95%;
+    }
+    50%{
+        top: 94%;
+    }
+    100%{
+        top: 95%;
+    }
 }
 
 .home-section .home .content_top .social-icons {
@@ -368,47 +386,51 @@
     right: 1%;
     z-index: 2;
 }
-.home-section .home .content_top .social-icons i{
-    font-size:23px;
+
+.home-section .home .content_top .social-icons i {
+    font-size: 23px;
     margin: 0 4px;
     color: #11101d;
     opacity: 0.8;
     transform: all 0.3s ease;
 }
-.home-section .home .content_top .social-icons i:hover{
+
+.home-section .home .content_top .social-icons i:hover {
     opacity: 1;
 }
 
-.home-section .home .content_top .social-icons .bi-github::after{
+.home-section .home .content_top .social-icons .bi-github::after {
     content: "";
     position: absolute;
-    right:50%;
-    bottom: -2px;
-    width:0;
+    right: 50%;
+    bottom: -3px;
+    width: 0;
     height: 2px;
-    background:#11101d;
+    background: #11101d;
     transition: all 0.3s;
 }
-.home-section .home .content_top .social-icons .bi-github:hover::after{
-    width:43%;
-    left:2%;
+
+.home-section .home .content_top .social-icons .bi-github:hover::after {
+    width: 43%;
+    left: 2%;
     right: 50%;
     transition: none 0 0.3s;
 }
 
-.home-section .home .content_top .social-icons .bi-envelope-fill::after{
+.home-section .home .content_top .social-icons .bi-envelope-fill::after {
     content: "";
     position: absolute;
-    right:0;
+    right: 0;
     bottom: -3px;
-    width:0;
+    width: 0;
     height: 2px;
-    background:#11101d;
+    background: #11101d;
     transition: all 0.3s;
 }
-.home-section .home .content_top .social-icons .bi-envelope-fill:hover::after{
-    width:43%;
-    left:55%;
+
+.home-section .home .content_top .social-icons .bi-envelope-fill:hover::after {
+    width: 43%;
+    left: 55%;
     right: 0;
     transition: none 0 0.3s;
 }
@@ -423,17 +445,66 @@
     top: 25%;
     width: 100%;
     height: 100px;
-    
+
 }
-.home-section .home .content_top h5{
+
+.home-section .home .content_top h1 {
+    border-bottom: 3px solid #fff;
+    display: flex;
+    justify-content: center;
     width: 30%;
-    border-top: 3px solid #fff;
-    line-height: 40px;
+    line-height: 60px;
+    white-space: nowrap;
     text-align: center;
 }
+
+.home-section .home .content_top h5 {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
 .home-section .home .content_top h1,
 .home-section .home .content_top h5 {
     color: #fff;
+}
+
+.home-section .home .content_top h5::after {
+    content: attr(data-spotlight);
+    /* 颜色设为透明，显示用背景图填充颜色 */
+    color: transparent;
+    position: absolute;
+    font-weight: 600;
+    top: 0;
+    left: 0;
+    text-align: center;
+    /* clip-path 属性可以将元素裁剪为基本形状或 SVG 源 */
+    -webkit-clip-path: ellipse(20px 20px at 0% 50%);
+    clip-path: ellipse(15px 15px at 0% 50%);
+    animation:spotlight 5s infinite;
+    background-image: url(../image/lighting2.jpg);
+    background-size: 150%;
+    background-position: center center;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@keyframes spotlight {
+    0% {
+        -webkit-clip-path: ellipse(20px 20px at 0% 50%);
+        clip-path: ellipse(15px 15px at 0% 50%);
+    }
+
+    50% {
+        -webkit-clip-path: ellipse(20px 20px at 100% 50%);
+        clip-path: ellipse(15px 15px at 100% 50%);
+    }
+
+    100% {
+        -webkit-clip-path: ellipse(20px 20px at 0% 50%);
+        clip-path: ellipse(15px 15px at 0% 50%);
+    }
 }
 
 /* 中间 */
@@ -479,27 +550,31 @@
     padding: 4px 0;
     font-size: 15px;
 }
+
 /* 正文部分 */
-.home-section .home .content_text{
+.home-section .home .content_text {
     position: relative;
     background-color: #fff;
     padding: 3vh 2vw;
     z-index: 1;
 }
+
 .home-section .home .content_text .text1,
 .home-section .home .content_text .text2,
-.home-section .home .content_text .text3{
+.home-section .home .content_text .text3 {
     display: flex;
     width: 100%;
     height: 25vh;
     margin-bottom: 5vh;
 }
-.home-section .home .content_text .text2{
+
+.home-section .home .content_text .text2 {
     flex-direction: row-reverse;
 }
+
 .home-section .home .content_text .text1 .color_box,
 .home-section .home .content_text .text2 .color_box,
-.home-section .home .content_text .text3 .color_box{
+.home-section .home .content_text .text3 .color_box {
     background-color: #FF5200;
     width: 55vw;
     display: flex;
@@ -508,17 +583,20 @@
     box-shadow: 1px 1px 5px #888888;
     padding: 0 15px;
 }
-.home-section .home .content_text .text2 .color_box{
+
+.home-section .home .content_text .text2 .color_box {
     background-color: #12947F;
     text-align: right;
 }
-.home-section .home .content_text .text3 .color_box{
+
+.home-section .home .content_text .text3 .color_box {
     background-color: #00A1AB;
 }
+
 .home-section .home .content_text .text1 .text_box,
 .home-section .home .content_text .text2 .text_box,
-.home-section .home .content_text .text3 .text_box{
-    width:30vw;
+.home-section .home .content_text .text3 .text_box {
+    width: 30vw;
     height: 130px;
     display: flex;
     flex-direction: column;
@@ -527,51 +605,59 @@
     color: rgb(167, 167, 168);
     padding: 0 2vw;
 }
-.home-section .home .content_text .text2 .text_box{
+
+.home-section .home .content_text .text2 .text_box {
     text-align: right;
 }
+
 /* 尾部 */
-.home-section .home .content_foot{
+.home-section .home .content_foot {
     position: relative;
     width: 100%;
-    height:220px;
+    height: 220px;
     padding: 60px 10vw;
-    background-color: rgb(48,48,48);
+    background-color: rgb(48, 48, 48);
     display: flex;
     justify-content: space-around;
     z-index: 1;
 }
+
 .home-section .home .content_foot .about_me,
 .home-section .home .content_foot .get_in_touch,
-.home-section .home .content_foot .copyright{
+.home-section .home .content_foot .copyright {
     width: 30%;
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
+
 .home-section .home .content_foot .about_me h1,
 .home-section .home .content_foot .get_in_touch h1,
-.home-section .home .content_foot .copyright h1{
+.home-section .home .content_foot .copyright h1 {
     color: #fff;
-    font-size:16px;
+    font-size: 16px;
     margin-bottom: 20px;
     text-transform: capitalize;
 }
+
 .home-section .home .content_foot .about_me span,
 .home-section .home .content_foot .get_in_touch li,
-.home-section .home .content_foot .copyright span{
-    font-size:10px;
+.home-section .home .content_foot .copyright span {
+    font-size: 10px;
     color: rgb(202, 202, 202);
 }
+
 .home-section .home .content_foot .about_me a,
 .home-section .home .content_foot .get_in_touch a,
-.home-section .home .content_foot .copyright a{
-    position:absolute;
+.home-section .home .content_foot .copyright a {
+    position: absolute;
     font-size: 5px;
     bottom: 10px;
     text-transform: capitalize;
     color: rgb(26, 101, 151);
 }
-.home-section .home .content_foot .copyright img{
-    width:25px;
+
+.home-section .home .content_foot .copyright img {
+    width: 25px;
 }
+
 /* --------------------------------------------------------------- */
